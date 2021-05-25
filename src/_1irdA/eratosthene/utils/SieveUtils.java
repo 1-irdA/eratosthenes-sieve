@@ -10,8 +10,8 @@ public class SieveUtils {
      * Filter prime number with index of array
      * Filter with n * n + n
      * Example :
-     * 2 * 2, 4 + 2, 6 + 2
-     * 3 * 3, 6 + 3, 9 + 3
+     * 2 * 2 = 4, 4 + 2 = 6, 6 + 2 = 8
+     * 3 * 3 = 9, 9 + 3 = 12, 12 + 3 = 15
      * @param primes array who define if a number is a prime number
      * @param multiple multiple to set at false
      */

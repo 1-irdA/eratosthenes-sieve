@@ -7,7 +7,7 @@ import static _1irdA.eratosthene.utils.SieveUtils.filter;
 
 /**
  * Eratosthenes class to find prime numbers
- * with Eratosthenes sieve.
+ * with Eratosthenes sieve
  */
 public class Eratosthenes {
 
@@ -19,8 +19,8 @@ public class Eratosthenes {
 
     /**
      * Contains boolean to define if number is
-     * a prime number.
-     * Array index represent the number.
+     * a prime number
+     * Array index represent the number
      */
     private final boolean[] primes;
 
@@ -90,8 +90,8 @@ public class Eratosthenes {
 
     /**
      * Initialize the array who defines if a number is a primer number
-     * following is index.
-     * Initialize [2, primes.length[, 0 and 1 are not prime numbers.
+     * following is index
+     * Initialize [2, primes.length[, 0 and 1 are not prime numbers
      */
     private void init() {
         IntStream.range(2, primes.length).forEach(i -> primes[i] = true);
