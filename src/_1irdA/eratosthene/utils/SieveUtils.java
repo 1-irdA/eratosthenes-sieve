@@ -16,7 +16,7 @@ public class SieveUtils {
      * @param multiple multiple to set at false
      */
     public static void filter(boolean[] primes, int multiple) {
-        for (int position = multiple * multiple; position < primes.length; position += multiple) {
+        for (int position = multiple * multiple; position > 0 && position < primes.length; position += multiple) {
             primes[position] = false;
         }
     }

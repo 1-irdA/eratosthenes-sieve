@@ -13,7 +13,7 @@ public class Main {
      * @param args unused
      */
     public static void main(String[] args) {
-        Eratosthenes sieve = new Eratosthenes(2000000000);
+        Eratosthenes sieve = new Eratosthenes(Integer.MAX_VALUE - 2);
         Benchmark benchmark = new Benchmark(sieve);
 
         benchmark.launch(true, false);
