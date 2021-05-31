@@ -32,6 +32,11 @@ public class Eratosthenes {
         limit = max;
         primes = new boolean[max];
         init();
+
+        /*
+         * Remove multiples of 2
+         */
+        filter(primes, 2);
     }
 
     /**
@@ -40,11 +45,6 @@ public class Eratosthenes {
     public void quickSieve() {
         ArrayList<Task> tasks = new ArrayList<>();
         double max = Math.sqrt(limit);
-
-        /*
-         * Remove multiples of 2
-         */
-        filter(primes,2);
 
         for (int number = 3; number < max; number += 2) {
             if (primes[number]) {
@@ -68,11 +68,6 @@ public class Eratosthenes {
      */
     public void sieve() {
         double max = Math.sqrt(limit);
-
-        /*
-         * Remove multiples of 2
-         */
-        filter(primes, 2);
 
         for (int number = 3; number < max; number += 2){
             if (primes[number]) {
