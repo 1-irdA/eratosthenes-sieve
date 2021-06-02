@@ -33,6 +33,9 @@ public class Eratosthenes {
         boolean[] primesArr = primes.getPrimeNumbers();
         double max = Math.sqrt(primesArr.length);
 
+        /*
+         * begin at 3, multiples of 2 already remove in init()
+         */
         for (int number = 3; number < max; number += 2) {
             if (primesArr[number]) {
                 Task task = new Task(number, primesArr);
@@ -59,6 +62,9 @@ public class Eratosthenes {
         boolean[] primesArr = primes.getPrimeNumbers();
         double max = Math.sqrt(primesArr.length);
 
+        /*
+         * begin at 3, multiples of 2 already remove in init()
+         */
         IntStream.iterate(3, number -> number += 2)
                 .limit((long) max)
                 .filter(number -> primesArr[number])
@@ -84,6 +90,9 @@ public class Eratosthenes {
         boolean[] primesArr = primes.getPrimeNumbers();
         double max = Math.sqrt(primesArr.length);
 
+        /*
+         * begin at 3, multiples of 2 already remove in init()
+         */
         for (int number = 3; number < max; number += 2){
             if (primesArr[number]) {
                 filter(primesArr, number);
@@ -99,6 +108,9 @@ public class Eratosthenes {
         boolean[] primesArr = primes.getPrimeNumbers();
         double max = Math.sqrt(primesArr.length);
 
+        /*
+         * begin at 3, multiples of 2 already remove in init()
+         */
         IntStream.iterate(3, number -> number += 2)
                 .limit((long) max)
                 .filter(number -> primesArr[number])
