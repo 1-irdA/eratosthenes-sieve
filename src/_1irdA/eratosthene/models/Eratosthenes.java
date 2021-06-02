@@ -12,31 +12,17 @@ import static _1irdA.eratosthene.utils.SieveUtils.filter;
 public class Eratosthenes {
 
     /**
-     * Max interval value to search
-     * prime numbers
+     * Wrapper for boolean array who represent
+     * prime numbers with array index
      */
-    private final int limit;
-
-    /**
-     * Contains boolean to define if number is
-     * a prime number
-     * Array index represent the number
-     */
-    private final boolean[] primes;
+    private final PrimeWrapper primes;
 
     /**
      * Initialize Eratosthenes
-     * @param max max interval value
+     * @param primesArr array to apply eratosthenes sieve
      */
-    public Eratosthenes(int max) {
-        limit = max;
-        primes = new boolean[max];
-        init();
-
-        /*
-         * Remove multiples of 2
-         */
-        filter(primes, 2);
+    public Eratosthenes(PrimeWrapper primesArr) {
+        primes = primesArr;
     }
 
     /**
@@ -44,15 +30,43 @@ public class Eratosthenes {
      */
     public void quickSieve() {
         ArrayList<Task> tasks = new ArrayList<>();
-        double max = Math.sqrt(limit);
+        boolean[] primesArr = primes.getPrimeNumbers();
+        double max = Math.sqrt(primesArr.length);
 
         for (int number = 3; number < max; number += 2) {
-            if (primes[number]) {
-                Task task = new Task(number, primes);
+            if (primesArr[number]) {
+                Task task = new Task(number, primesArr);
                 task.start();
                 tasks.add(task);
             }
         }
+
+        for (Task task : tasks) {
+            try {
+                task.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Search all prime numbers with multi threads
+     * and functional programming
+     */
+    public void functionalQuickSieve() {
+        ArrayList<Task> tasks = new ArrayList<>();
+        boolean[] primesArr = primes.getPrimeNumbers();
+        double max = Math.sqrt(primesArr.length);
+
+        IntStream.iterate(3, number -> number += 2)
+                .limit((long) max)
+                .filter(number -> primesArr[number])
+                .mapToObj(number -> new Task(number, primesArr))
+                .forEach(task -> {
+                    task.start();
+                    tasks.add(task);
+                });
 
         tasks.forEach(thread -> {
             try {
@@ -67,28 +81,27 @@ public class Eratosthenes {
      * Search prime numbers with single thread
      */
     public void sieve() {
-        double max = Math.sqrt(limit);
+        boolean[] primesArr = primes.getPrimeNumbers();
+        double max = Math.sqrt(primesArr.length);
 
         for (int number = 3; number < max; number += 2){
-            if (primes[number]) {
-                filter(primes, number);
+            if (primesArr[number]) {
+                filter(primesArr, number);
             }
         }
     }
 
     /**
-     * Display prime numbers
+     * Search prime numbers with single thread
+     * and functional programming
      */
-    public void display() {
-        IntStream.range(2, limit).filter(number -> primes[number]).forEach(System.out::println);
-    }
+    public void functionalSieve() {
+        boolean[] primesArr = primes.getPrimeNumbers();
+        double max = Math.sqrt(primesArr.length);
 
-    /**
-     * Initialize the array who defines if a number is a primer number
-     * following is index
-     * Initialize [2, primes.length[, 0 and 1 are not prime numbers
-     */
-    private void init() {
-        IntStream.range(2, primes.length).forEach(i -> primes[i] = true);
+        IntStream.iterate(3, number -> number += 2)
+                .limit((long) max)
+                .filter(number -> primesArr[number])
+                .forEach(number -> filter(primesArr, number));
     }
 }

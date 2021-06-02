@@ -2,6 +2,7 @@ package _1irdA.eratosthene;
 
 import _1irdA.eratosthene.models.Benchmark;
 import _1irdA.eratosthene.models.Eratosthenes;
+import _1irdA.eratosthene.models.PrimeWrapper;
 
 /**
  * Test class
@@ -13,9 +14,15 @@ public class Main {
      * @param args unused
      */
     public static void main(String[] args) {
-        Eratosthenes sieve = new Eratosthenes(Integer.MAX_VALUE - 2);
-        Benchmark benchmark = new Benchmark(sieve);
+        PrimeWrapper primes = new PrimeWrapper(Integer.MAX_VALUE - 2);
+        Eratosthenes sieve = new Eratosthenes(primes);
+        Benchmark benchmark = new Benchmark(sieve, primes);
 
-        benchmark.launch(true, false);
+        primes.init();
+
+        benchmark.launchUnique(true, false,false);
+        benchmark.launchUnique(true, true,false);
+        benchmark.launchUnique(false, false,false);
+        benchmark.launchUnique(false, true,false);
     }
 }

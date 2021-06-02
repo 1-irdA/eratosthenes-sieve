@@ -13,23 +13,35 @@ public class Benchmark {
     private final Eratosthenes sieve;
 
     /**
-     * Initialize Benchmark to compute execution time
-     * @param eratosthenes object to search prime numbers
+     * Array of prime numbers wrapper
      */
-    public Benchmark(Eratosthenes eratosthenes) {
+    private final PrimeWrapper primeWrapper;
+
+    /**
+     * Initialize Benchmark to compute execution time
+     * @param eratosthenes to search prime numbers
+     * @param wrapper contains primes number
+     */
+    public Benchmark(Eratosthenes eratosthenes, PrimeWrapper wrapper) {
         sieve = eratosthenes;
+        primeWrapper = wrapper;
     }
 
     /**
      * Launch benchmarking
      * @param concurrent if true, launch multi thread method
+     * @param functional if true, launch functional method
      * @param displayNumbers if true, display prime numbers
      */
-    public void launch(boolean concurrent, boolean displayNumbers) {
+    public void launchUnique(boolean concurrent, boolean functional, boolean displayNumbers) {
         long start = System.currentTimeMillis();
 
-        if (concurrent) {
+        if (concurrent && functional) {
+            sieve.functionalQuickSieve();
+        } else if (concurrent) {
             sieve.quickSieve();
+        } else if (functional) {
+            sieve.functionalSieve();
         } else {
             sieve.sieve();
         }
@@ -37,9 +49,26 @@ public class Benchmark {
         long duration = System.currentTimeMillis() - start;
 
         if (displayNumbers) {
-            sieve.display();
+            primeWrapper.display();
         }
 
-        System.out.println("Sieve duration : " + duration + " ms");
+        /*
+         * Init primes for other tests
+         */
+        primeWrapper.init();
+
+        System.out.printf("""
+            ----------------
+            Max number : %d
+            Concurrent : %b
+            Functional : %b
+            Display    : %b
+            Duration   : %d ms
+            """,
+                primeWrapper.getMaxLimit(),
+                concurrent,
+                functional,
+                displayNumbers,
+                duration);
     }
 }

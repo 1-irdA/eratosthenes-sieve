@@ -10,34 +10,42 @@ Find prime numbers with Eratosthenes sieve with mono and multi threads.
 
 - Prime numbers between 0 and 100 000 000 : 
 
-time < 650 ms
+time < 750 ms
 
 - Prime numbers between 0 and 500 000 000 :
 
-time < 4500 ms
+time < 4300 ms
 
 - Prime numbers between 0 and 1 000 000 000 :
 
-time < 9000 ms
+time < 8500 ms
 
 - Prime numbers between 0 and 2 000 000 000 :
 
 time < 19000 ms
 
+- Prime numbers between 0 and 2 147 483 645
+
+time < 21000 ms
+
 ### Multi threads
 
 - Prime numbers between 0 and 100 000 000 :
 
-time < 650 ms  
+time < 500 ms  
 
-- Prime numbers between 0 and 500 000 000 :
-
+- Prime numbers between 0 and 500 000 000 : 
+  
 time < 3500 ms
 
 - Prime numbers between 0 and 1 000 000 000 :
 
-time < 7000 ms
+time < 6500 ms
 
 - Prime numbers between 0 and 2 000 000 000 :
 
 time < 13000 ms
+
+- Prime numbers between 0 and 2 147 483 645
+
+time < 15000 ms
