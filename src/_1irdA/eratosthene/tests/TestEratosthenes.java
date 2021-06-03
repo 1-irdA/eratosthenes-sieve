@@ -24,9 +24,10 @@ public class TestEratosthenes {
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
-        assertEquals(IntStream.range(0, primesArr.length)
+        assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED,
+                IntStream.range(0, primesArr.length)
                 .filter(number -> primesArr[number])
-                .count(), NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED);
+                .count());
     }
 
     @Test
@@ -39,9 +40,10 @@ public class TestEratosthenes {
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
-        assertEquals(IntStream.range(0, primesArr.length)
+        assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED,
+                IntStream.range(0, primesArr.length)
                 .filter(number -> primesArr[number])
-                .count(), NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED);
+                .count());
     }
 
     @Test
@@ -54,9 +56,10 @@ public class TestEratosthenes {
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
-        assertEquals(IntStream.range(0, primesArr.length)
+        assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_THOUSAND,
+                IntStream.range(0, primesArr.length)
                 .filter(number -> primesArr[number])
-                .count(), NB_PRIME_NUMBERS_UNDER_ONE_THOUSAND);
+                .count());
     }
 
     @Test
@@ -69,8 +72,9 @@ public class TestEratosthenes {
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
-        assertEquals(IntStream.range(0, primesArr.length)
+        assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_THOUSAND,
+                IntStream.range(0, primesArr.length)
                 .filter(number -> primesArr[number])
-                .count(), NB_PRIME_NUMBERS_UNDER_ONE_THOUSAND);
+                .count());
     }
 }
