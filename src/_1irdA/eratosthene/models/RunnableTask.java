@@ -5,10 +5,10 @@ import static _1irdA.eratosthene.utils.SieveUtils.filter;
 /**
  * Task class to find prime numbers concurrently
  */
-public class Task extends Thread {
+public class RunnableTask implements Runnable {
 
     /**
-     * Multiples to set at false
+     * Multiple to set at false
      */
     private final int position;
 
@@ -20,12 +20,12 @@ public class Task extends Thread {
 
     /**
      * Initialize Task
+     * @param primesArr array who define if a number is a primer number
      * @param multiple multiple to set at false
-     * @param array array who define if a number is a primer number
      */
-    public Task(int multiple, boolean[] array) {
+    public RunnableTask(boolean[] primesArr, int multiple) {
+        primes = primesArr;
         position = multiple;
-        primes = array;
     }
 
     @Override

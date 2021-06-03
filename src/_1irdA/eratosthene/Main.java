@@ -20,9 +20,10 @@ public class Main {
 
         primes.init();
 
-        benchmark.launchUnique(true, false,false);
-        benchmark.launchUnique(true, true,false);
-        benchmark.launchUnique(false, false,false);
-        benchmark.launchUnique(false, true,false);
+        benchmark.launchUnique(true,false,false,false);
+        benchmark.launchUnique(true,true,false,false);
+        benchmark.launchUnique(true,false,true,false);
+        benchmark.launchUnique(false,false,false,false);
+        benchmark.launchUnique(false,false,true,false);
     }
 }

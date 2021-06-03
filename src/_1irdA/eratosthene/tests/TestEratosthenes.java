@@ -14,6 +14,8 @@ public class TestEratosthenes {
 
     private static final int NB_PRIME_NUMBERS_UNDER_ONE_THOUSAND = 168;
 
+    private static final int NB_PRIME_NUMBERS_UNDER_TEN_THOUSAND = 1229;
+
     @Test
     public void testSieveOneHundred() {
         PrimeWrapper primeWrapper = new PrimeWrapper(100);
@@ -76,5 +78,21 @@ public class TestEratosthenes {
                 IntStream.range(0, primesArr.length)
                 .filter(number -> primesArr[number])
                 .count());
+    }
+
+    @Test
+    public void testRunnableQuickSieveOneThousand() {
+        PrimeWrapper primeWrapper = new PrimeWrapper(10000);
+        Eratosthenes eratosthenes = new Eratosthenes(primeWrapper);
+
+        primeWrapper.init();
+        eratosthenes.functionalQuickSieve();
+
+        boolean[] primesArr = primeWrapper.getPrimeNumbers();
+
+        assertEquals(NB_PRIME_NUMBERS_UNDER_TEN_THOUSAND,
+                IntStream.range(0, primesArr.length)
+                        .filter(number -> primesArr[number])
+                        .count());
     }
 }

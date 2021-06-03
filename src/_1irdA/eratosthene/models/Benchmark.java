@@ -29,15 +29,21 @@ public class Benchmark {
 
     /**
      * Launch benchmarking
-     * @param concurrent if true, launch multi thread method
+     * @param concurrent if true, launch multi threads method
+     * @param run if true, launch multi threads who implements Runnable
      * @param functional if true, launch functional method
      * @param displayNumbers if true, display prime numbers
      */
-    public void launchUnique(boolean concurrent, boolean functional, boolean displayNumbers) {
+    public void launchUnique(boolean concurrent,
+                             boolean run,
+                             boolean functional,
+                             boolean displayNumbers) {
         long start = System.currentTimeMillis();
 
         if (concurrent && functional) {
             sieve.functionalQuickSieve();
+        } else if (concurrent && run) {
+            sieve.runnableQuickSieve();
         } else if (concurrent) {
             sieve.quickSieve();
         } else if (functional) {
@@ -58,15 +64,17 @@ public class Benchmark {
         primeWrapper.init();
 
         System.out.printf("""
-            ----------------
+            -------------------------
             Max number : %d
             Concurrent : %b
+            Runnable   : %b
             Functional : %b
             Display    : %b
             Duration   : %d ms
             """,
                 primeWrapper.getMaxLimit(),
                 concurrent,
+                run,
                 functional,
                 displayNumbers,
                 duration);
