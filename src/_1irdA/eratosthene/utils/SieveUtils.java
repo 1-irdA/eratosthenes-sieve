@@ -8,7 +8,9 @@ public class SieveUtils {
 
     /**
      * Filter prime number with index of array
-     * Filter with n * n + n
+     * Filter with a step of (1 + multiple % 2) * multiple
+     * to not filter on pair values because there already set at false
+     * with filter multiples of 2, divide time by 2.
      * Example :
      * With 2 : 2 * 2 = 4, 4 + 1 * 2 = 6, 6 + 1 * 2 = 8
      * With 3 : 3 * 3 = 9, 9 + 2 * 3 = 15, 15 + 2 * 3 = 21
