@@ -4,8 +4,6 @@ import _1irdA.eratosthene.models.Benchmark;
 import _1irdA.eratosthene.models.Eratosthenes;
 import _1irdA.eratosthene.models.PrimeWrapper;
 
-import java.lang.reflect.InvocationTargetException;
-
 /**
  * Test class
  */
