@@ -20,12 +20,12 @@ public class ThreadTask extends Thread {
 
     /**
      * Initialize Task
-     * @param multiple multiple to set at false
      * @param array array who define if a number is a primer number
+     * @param multiple multiple to set at false
      */
-    public ThreadTask(int multiple, boolean[] array) {
+    public ThreadTask(boolean[] primesArr, int multiple) {
+        primes = primesArr;
         position = multiple;
-        primes = array;
     }
 
     @Override

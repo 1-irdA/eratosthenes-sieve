@@ -40,7 +40,7 @@ public class Eratosthenes {
          */
         for (int number = 3; number < max; number += 2) {
             if (primesArr[number]) {
-                ThreadTask task = new ThreadTask(number, primesArr);
+                ThreadTask task = new ThreadTask(primesArr, number);
                 task.start();
                 tasks.add(task);
             }
@@ -70,7 +70,7 @@ public class Eratosthenes {
         IntStream.iterate(3, number -> number += 2)
                 .limit((long) max)
                 .filter(number -> primesArr[number])
-                .mapToObj(number -> new ThreadTask(number, primesArr))
+                .mapToObj(number -> new ThreadTask(primesArr, number))
                 .forEach(task -> {
                     task.start();
                     tasks.add(task);
