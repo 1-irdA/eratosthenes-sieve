@@ -107,6 +107,24 @@ public class Eratosthenes {
         while (!executor.isTerminated());
     }
 
+    public void functionalRunnableQuickSieve() {
+        boolean[] primesArr = primes.getPrimeNumbers();
+        double max = Math.sqrt(primesArr.length);
+        ExecutorService executor = Executors.newCachedThreadPool();
+
+        /*
+         * begin at 3, multiples of 2 already remove in init()
+         */
+        IntStream.iterate(3, number -> number += 2)
+                .limit((long) max)
+                .filter(number -> primesArr[number])
+                .mapToObj(number -> new RunnableTask(primesArr, number))
+                .forEach(executor::execute);
+
+        executor.shutdown();
+        while (!executor.isTerminated());
+    }
+
     /**
      * Search prime numbers with single thread
      */

@@ -1,11 +1,27 @@
 package _1irdA.eratosthene.models;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.function.Consumer;
+
 /**
  * Benchmark class to compute execution time
  * of Eratosthenes sieve with mono thread
  * and multi thread
  */
 public class Benchmark {
+
+    /**
+     * Describe benchmark options
+     */
+    private static final String[] OPTIONS = {
+            "Runnable quick sieve",
+            "Functional and runnable quick sieve",
+            "Quick sieve",
+            "Functional quick sieve",
+            "Sieve",
+            "Functional sieve"
+    };
 
     /**
      * Eratosthenes sieve
@@ -29,32 +45,30 @@ public class Benchmark {
 
     /**
      * Launch benchmarking
-     * @param concurrent if true, launch multi threads method
-     * @param run if true, launch multi threads who implements Runnable
-     * @param functional if true, launch functional method
-     * @param displayNumbers if true, display prime numbers
+     * @param option option to launch sieve
+     *                   0 -> Runnable quick sieve
+     *                   1 -> Functional and runnable quick sieve
+     *                   2 -> Quick sieve
+     *                   3 -> Functional quick sieve
+     *                   4 -> Sieve
+     *                   5 -> Functional sieve
+     * @param display if true, display prime numbers
      */
-    public void launchUnique(boolean concurrent,
-                             boolean run,
-                             boolean functional,
-                             boolean displayNumbers) {
+    public void launchUnique(int option, boolean display) {
         long start = System.currentTimeMillis();
 
-        if (concurrent && functional) {
-            sieve.functionalQuickSieve();
-        } else if (concurrent && run) {
-            sieve.runnableQuickSieve();
-        } else if (concurrent) {
-            sieve.quickSieve();
-        } else if (functional) {
-            sieve.functionalSieve();
-        } else {
-            sieve.sieve();
+        switch (option) {
+            case 0 -> sieve.runnableQuickSieve();
+            case 1 -> sieve.functionalRunnableQuickSieve();
+            case 2 -> sieve.quickSieve();
+            case 3 -> sieve.functionalQuickSieve();
+            case 4 -> sieve.sieve();
+            case 5 -> sieve.functionalSieve();
         }
 
         long duration = System.currentTimeMillis() - start;
 
-        if (displayNumbers) {
+        if (display) {
             primeWrapper.display();
         }
 
@@ -66,17 +80,11 @@ public class Benchmark {
         System.out.printf("""
             -------------------------
             Max number : %d
-            Concurrent : %b
-            Runnable   : %b
-            Functional : %b
-            Display    : %b
+            Option     : %s
             Duration   : %d ms
             """,
                 primeWrapper.getMaxLimit(),
-                concurrent,
-                run,
-                functional,
-                displayNumbers,
+                OPTIONS[option],
                 duration);
     }
 }
