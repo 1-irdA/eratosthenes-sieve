@@ -24,7 +24,7 @@ public class TestPrimeWrapper {
          */
         assertTrue(IntStream.range(3, primesArr.length)
                 .filter(index -> index % 2 == 0)
-                .allMatch(index -> !primesArr[index]));
+                .noneMatch(index -> primesArr[index]));
     }
 
     @Test
