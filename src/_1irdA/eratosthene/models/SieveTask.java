@@ -3,9 +3,9 @@ package _1irdA.eratosthene.models;
 import static _1irdA.eratosthene.utils.SieveUtils.filter;
 
 /**
- * Task class to find prime numbers concurrently
+ * SieveTask class to find prime numbers concurrently
  */
-public class RunnableTask implements Runnable {
+public class SieveTask implements Runnable {
 
     /**
      * Multiple to set at false
@@ -23,7 +23,7 @@ public class RunnableTask implements Runnable {
      * @param primesArr array who define if a number is a primer number
      * @param multiple multiple to set at false
      */
-    public RunnableTask(boolean[] primesArr, int multiple) {
+    public SieveTask(boolean[] primesArr, int multiple) {
         primes = primesArr;
         position = multiple;
     }

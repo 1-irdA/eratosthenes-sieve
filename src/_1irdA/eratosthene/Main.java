@@ -21,11 +21,9 @@ public class Main {
 
         primes.init();
 
-        benchmark.launchUnique(0,false);
-        benchmark.launchUnique(1,false);
-        benchmark.launchUnique(2,false);
-        benchmark.launchUnique(3,false);
-        benchmark.launchUnique(4,false);
-        benchmark.launchUnique(5,false);
+        benchmark.launchUnique(true, false);
+        benchmark.launchUnique(false, false);
+
+        benchmark.launchSeveral(5, true);
     }
 }

@@ -12,8 +12,6 @@ public class TestEratosthenes {
 
     private static final int NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED = 25;
 
-    private static final int NB_PRIME_NUMBERS_UNDER_ONE_THOUSAND = 168;
-
     private static final int NB_PRIME_NUMBERS_UNDER_TEN_THOUSAND = 1229;
 
     @Test
@@ -49,44 +47,12 @@ public class TestEratosthenes {
     }
 
     @Test
-    public void testFunctionalSieveOneThousand() {
-        PrimeWrapper primeWrapper = new PrimeWrapper(1000);
-        Eratosthenes eratosthenes = new Eratosthenes(primeWrapper);
-
-        primeWrapper.init();
-        eratosthenes.functionalSieve();
-
-        boolean[] primesArr = primeWrapper.getPrimeNumbers();
-
-        assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_THOUSAND,
-                IntStream.range(0, primesArr.length)
-                .filter(number -> primesArr[number])
-                .count());
-    }
-
-    @Test
-    public void testFunctionalQuickSieveOneThousand() {
-        PrimeWrapper primeWrapper = new PrimeWrapper(1000);
-        Eratosthenes eratosthenes = new Eratosthenes(primeWrapper);
-
-        primeWrapper.init();
-        eratosthenes.functionalQuickSieve();
-
-        boolean[] primesArr = primeWrapper.getPrimeNumbers();
-
-        assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_THOUSAND,
-                IntStream.range(0, primesArr.length)
-                .filter(number -> primesArr[number])
-                .count());
-    }
-
-    @Test
-    public void testRunnableQuickSieveOneThousand() {
+    public void testQuickSieveTenThousand() {
         PrimeWrapper primeWrapper = new PrimeWrapper(10000);
         Eratosthenes eratosthenes = new Eratosthenes(primeWrapper);
 
         primeWrapper.init();
-        eratosthenes.functionalQuickSieve();
+        eratosthenes.quickSieve();
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
