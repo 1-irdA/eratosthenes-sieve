@@ -45,7 +45,7 @@ public class Benchmark {
         long duration = System.currentTimeMillis() - start;
 
         if (display) {
-            primeWrapper.display();
+            primeWrapper.displayPrimeNumbers();
         }
 
         /*
@@ -73,6 +73,8 @@ public class Benchmark {
 
         long start;
         long end;
+
+        System.out.println("-------------------------");
 
         for (int i = 0; i < nbTests; i++) {
             start = System.currentTimeMillis();

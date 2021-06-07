@@ -18,9 +18,10 @@ public class SieveUtils {
      * @param multiple multiple to set at false
      */
     public static void filter(boolean[] primes, int multiple) {
+        int step = (1 + multiple % 2) * multiple;
         for (int position = multiple * multiple;
                 position > 0 && position < primes.length;
-                position += (1 + multiple % 2) * multiple) {
+                position += step) {
             primes[position] = false;
         }
     }

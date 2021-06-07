@@ -50,7 +50,7 @@ public class PrimeWrapper {
     /**
      * Display prime numbers
      */
-    public void display() {
+    public void displayPrimeNumbers() {
         IntStream.range(2, primeNumbers.length)
                 .filter(number -> primeNumbers[number])
                 .forEach(System.out::println);
