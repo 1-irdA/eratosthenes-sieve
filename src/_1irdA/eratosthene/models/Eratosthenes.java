@@ -60,22 +60,24 @@ public class Eratosthenes {
         IntStream.iterate(3, number -> number += 2)
                 .limit((long) max)
                 .filter(number -> primesArr[number])
-                .forEach(number -> filter(primesArr, number));
+                .forEach(number -> eliminateMultiples(primesArr, number));
     }
 
     /**
-     * Filter prime number with index of array
-     * Filter with a step of (1 + multiple % 2) * multiple
-     * to not filter on pair values because there already set at false
-     * with filter multiples of 2, divide time by 2.
+     * Eliminate multiples of numbers in primes array.
+     * Eliminate with a step of (1 + multiple % 2) * multiple
+     * to not eliminate a second time pair values because
+     * there already set at false when we eliminate multiples of 2.
+     * This optimisation divide time by 2.
      * Example :
      * With 2 : 2 * 2 = 4, 4 + 1 * 2 = 6, 6 + 1 * 2 = 8
      * With 3 : 3 * 3 = 9, 9 + 2 * 3 = 15, 15 + 2 * 3 = 21
      * @param primes array who define if a number is a prime number
      * @param multiple multiple to set at false
      */
-    public static void filter(boolean[] primes, int multiple) {
+    public static void eliminateMultiples(boolean[] primes, int multiple) {
         int step = (1 + multiple % 2) * multiple;
+
         for (int position = multiple * multiple;
              position > 0 && position < primes.length;
              position += step) {

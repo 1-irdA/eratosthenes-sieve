@@ -2,7 +2,7 @@ package _1irdA.eratosthene.models;
 
 import java.util.stream.IntStream;
 
-import static _1irdA.eratosthene.models.Eratosthenes.filter;
+import static _1irdA.eratosthene.models.Eratosthenes.eliminateMultiples;
 
 /**
  * Wrapper class who represent all primes
@@ -44,7 +44,7 @@ public class PrimeWrapper {
         /*
          * Remove multiples of 2
          */
-        filter(primeNumbers, 2);
+        eliminateMultiples(primeNumbers, 2);
     }
 
     /**

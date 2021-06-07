@@ -1,6 +1,6 @@
 package _1irdA.eratosthene.models;
 
-import static _1irdA.eratosthene.models.Eratosthenes.filter;
+import static _1irdA.eratosthene.models.Eratosthenes.eliminateMultiples;
 
 /**
  * SieveTask class to find prime numbers concurrently
@@ -30,6 +30,6 @@ public class SieveTask implements Runnable {
 
     @Override
     public void run() {
-        filter(primes, position);
+        eliminateMultiples(primes, position);
     }
 }
