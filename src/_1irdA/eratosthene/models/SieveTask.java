@@ -1,6 +1,6 @@
 package _1irdA.eratosthene.models;
 
-import static _1irdA.eratosthene.utils.SieveUtils.filter;
+import static _1irdA.eratosthene.models.Eratosthenes.filter;
 
 /**
  * SieveTask class to find prime numbers concurrently

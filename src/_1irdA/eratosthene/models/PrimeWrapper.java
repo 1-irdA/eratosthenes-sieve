@@ -2,7 +2,7 @@ package _1irdA.eratosthene.models;
 
 import java.util.stream.IntStream;
 
-import static _1irdA.eratosthene.utils.SieveUtils.filter;
+import static _1irdA.eratosthene.models.Eratosthenes.filter;
 
 /**
  * Wrapper class who represent all primes
