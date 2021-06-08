@@ -161,7 +161,7 @@ public class TestEratosthenes {
 
         /*
          * Check if sieve algorithm set at false
-         * an no prime number.
+         * a no prime number.
          */
         assertFalse(primesArr[NOT_A_PRIME_NUMBER_UNDER_FIVE_THOUSAND]);
     }
