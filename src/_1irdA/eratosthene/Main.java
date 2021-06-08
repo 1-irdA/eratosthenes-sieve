@@ -23,7 +23,5 @@ public class Main {
 
         benchmark.launchUnique(true, false);
         benchmark.launchUnique(false, false);
-
-        benchmark.launchSeveral(5, true);
     }
 }

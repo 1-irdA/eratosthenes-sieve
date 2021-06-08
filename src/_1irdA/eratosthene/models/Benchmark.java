@@ -63,29 +63,4 @@ public class Benchmark {
                 concurrent,
                 duration);
     }
-
-    /**
-     * Launch several benchmarking test following parameters
-     * @param nbTests Number of tests to execute
-     * @param concurrent If true, launch concurrent sieve
-     */
-    public void launchSeveral(int nbTests, boolean concurrent)  {
-
-        long start;
-        long end;
-
-        System.out.println("-------------------------");
-
-        for (int i = 0; i < nbTests; i++) {
-            start = System.currentTimeMillis();
-            if (concurrent) {
-                sieve.quickSieve();
-            } else {
-                sieve.sieve();
-            }
-            end = System.currentTimeMillis() - start;
-            System.out.printf("Time %d : %d ms\n", i, end);
-            primeWrapper.init();
-        }
-    }
 }
