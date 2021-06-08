@@ -50,6 +50,10 @@ public class TestEratosthenes {
                 .filter(number -> primesArr[number])
                 .count());
 
+        /*
+         * Check if sieve algorithm set at true
+         * an expected prime number.
+         */
         assertTrue(primesArr[A_PRIME_NUMBER_UNDER_ONE_HUNDRED]);
     }
 
