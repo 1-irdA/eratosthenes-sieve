@@ -38,7 +38,7 @@ public class TestPrimeWrapper {
         /*
          * check if odd values are set to true
          */
-        assertTrue(IntStream.range(2, primesArr.length)
+        assertTrue(IntStream.range(3, primesArr.length)
                 .filter(index -> index % 2 != 0)
                 .allMatch(index -> primesArr[index]));
     }

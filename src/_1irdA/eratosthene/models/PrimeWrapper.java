@@ -2,8 +2,6 @@ package _1irdA.eratosthene.models;
 
 import java.util.stream.IntStream;
 
-import static _1irdA.eratosthene.models.Eratosthenes.eliminateMultiples;
-
 /**
  * Wrapper class who represent all primes
  * number between [0, Integer.MAX_VALUE - 2]
@@ -33,18 +31,15 @@ public class PrimeWrapper {
     }
 
     /**
-     * Initialize the array who defines if a number is a primer number
-     * following is index
-     * Initialize [2, primes.length[, 0 and 1 are not prime numbers
+     * Initialize [3, primes.length[ with a step of 2
+     * Initialize only odd values to true because only 2 is a pair prime number
+     * 0 and 1 are not prime numbers
      */
     public void init() {
-        IntStream.range(2, primeNumbers.length)
+        primeNumbers[2] = true;
+        IntStream.range(3, primeNumbers.length)
+                .filter(index -> index % 2 != 0)
                 .forEach(index -> primeNumbers[index] = true);
-
-        /*
-         * Remove multiples of 2
-         */
-        eliminateMultiples(primeNumbers, 2);
     }
 
     /**
