@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestEratosthenes {
 
@@ -14,9 +14,22 @@ public class TestEratosthenes {
 
     private static final int NB_PRIME_NUMBERS_UNDER_TEN_THOUSAND = 1229;
 
-    private static final int NB_PRIME_NUMBERS_UNDER_ONE_MILLION = 9592;
+    private static final int NB_PRIME_NUMBERS_UNDER_ONE_MILLION = 78498;
 
     private static final int NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED_MILLION = 5761455;
+
+    private static final int A_PRIME_NUMBER_UNDER_ONE_HUNDRED = 61;
+
+    private static final int A_PRIME_NUMBER_UNDER_TEN_THOUSAND = 3407;
+
+    private static final int A_PRIME_NUMBER_UNDER_ONE_MILLION = 648709;
+
+    private static final int A_PRIME_NUMBER_UNDER_ONE_HUNDRED_MILLION = 99995747;
+
+    private static final int A_PRIME_NUMBER_UNDER_TWO_BILLIONS = 1000387097;
+
+    private static final int NOT_A_PRIME_NUMBER_UNDER_FIVE_THOUSAND = 4417;
+
 
     @Test
     public void testSieveOneHundred() {
@@ -28,27 +41,18 @@ public class TestEratosthenes {
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
+        /*
+         * Count the number of prime numbers
+         * and compare with the expected value.
+         */
         assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED,
                 IntStream.range(0, primesArr.length)
                 .filter(number -> primesArr[number])
                 .count());
+
+        assertTrue(primesArr[A_PRIME_NUMBER_UNDER_ONE_HUNDRED]);
     }
 
-    @Test
-    public void testQuickSieveOneHundred() {
-        PrimeWrapper primeWrapper = new PrimeWrapper(100);
-        Eratosthenes eratosthenes = new Eratosthenes(primeWrapper);
-
-        primeWrapper.init();
-        eratosthenes.quickSieve();
-
-        boolean[] primesArr = primeWrapper.getPrimeNumbers();
-
-        assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED,
-                IntStream.range(0, primesArr.length)
-                .filter(number -> primesArr[number])
-                .count());
-    }
 
     @Test
     public void testQuickSieveTenThousand() {
@@ -60,15 +64,25 @@ public class TestEratosthenes {
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
+        /*
+         * Count the number of prime numbers
+         * and compare with the expected value.
+         */
         assertEquals(NB_PRIME_NUMBERS_UNDER_TEN_THOUSAND,
                 IntStream.range(0, primesArr.length)
                         .filter(number -> primesArr[number])
                         .count());
+
+        /*
+         * Check if sieve algorithm set at true
+         * an expected prime number.
+         */
+        assertTrue(primesArr[A_PRIME_NUMBER_UNDER_TEN_THOUSAND]);
     }
 
     @Test
     public void testQuickSieveOneMillion() {
-        PrimeWrapper primeWrapper = new PrimeWrapper(100000);
+        PrimeWrapper primeWrapper = new PrimeWrapper(1000000);
         Eratosthenes eratosthenes = new Eratosthenes(primeWrapper);
 
         primeWrapper.init();
@@ -76,10 +90,20 @@ public class TestEratosthenes {
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
+        /*
+         * Count the number of prime numbers
+         * and compare with the expected value.
+         */
         assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_MILLION,
                 IntStream.range(0, primesArr.length)
                         .filter(number -> primesArr[number])
                         .count());
+
+        /*
+         * Check if sieve algorithm set at true
+         * an expected prime number.
+         */
+        assertTrue(primesArr[A_PRIME_NUMBER_UNDER_ONE_MILLION]);
     }
 
     @Test
@@ -92,9 +116,53 @@ public class TestEratosthenes {
 
         boolean[] primesArr = primeWrapper.getPrimeNumbers();
 
+        /*
+         * Count the number of prime numbers
+         * and compare with the expected value.
+         */
         assertEquals(NB_PRIME_NUMBERS_UNDER_ONE_HUNDRED_MILLION,
                 IntStream.range(0, primesArr.length)
                         .filter(number -> primesArr[number])
                         .count());
+
+        /*
+         * Check if sieve algorithm set at true
+         * an expected prime number.
+         */
+        assertTrue(primesArr[A_PRIME_NUMBER_UNDER_ONE_HUNDRED_MILLION]);
+    }
+
+    @Test
+    public void testQuickSieveOneBillionFive() {
+        PrimeWrapper primeWrapper = new PrimeWrapper(1500000000);
+        Eratosthenes eratosthenes = new Eratosthenes(primeWrapper);
+
+        primeWrapper.init();
+        eratosthenes.quickSieve();
+
+        boolean[] primesArr = primeWrapper.getPrimeNumbers();
+
+        /*
+         * Check if sieve algorithm set at true
+         * an expected prime number.
+         */
+        assertTrue(primesArr[A_PRIME_NUMBER_UNDER_TWO_BILLIONS]);
+    }
+
+    @Test
+    public void testIfIsNotAPrimeNumber() {
+        PrimeWrapper primeWrapper = new PrimeWrapper(5000);
+        Eratosthenes eratosthenes = new Eratosthenes(primeWrapper);
+
+        primeWrapper.init();
+        eratosthenes.quickSieve();
+
+        boolean[] primesArr = primeWrapper.getPrimeNumbers();
+
+        /*
+         * Check if sieve algorithm set at false
+         * an no prime number.
+         */
+        assertFalse(primesArr[NOT_A_PRIME_NUMBER_UNDER_FIVE_THOUSAND]);
     }
 }
