@@ -34,7 +34,7 @@ public class Eratosthenes {
         ExecutorService executor = Executors.newCachedThreadPool();
 
         /*
-         * begin at 3, multiples of 2 already remove in init()
+         * begin at 3, multiples of 2 already removed in init()
          */
         for (int number = 3; number < max; number += 2) {
             if (primesArr[number]) {
@@ -55,7 +55,7 @@ public class Eratosthenes {
         double max = Math.sqrt(primesArr.length);
 
         /*
-         * begin at 3, multiples of 2 already remove in init()
+         * begin at 3, multiples of 2 already removed in init()
          */
         IntStream.iterate(3, number -> number += 2)
                 .limit((long) max)
